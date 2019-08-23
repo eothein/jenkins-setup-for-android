@@ -1,0 +1,22 @@
+{
+  "builders": [
+    {
+      "type": "googlecompute",
+      "account_file": "account-details.json",
+      "project_id": "jenkins-server-250512",
+      "source_image_family": "ubuntu-1604-lts",
+      "source_image_project_id": "ubuntu-os-cloud",
+      "zone": "us-central1-a",
+      "disk_size": "15",
+      "image_name": "jenkins-agent-{{timestamp}}",
+      "image_family": "jenkins-agent",
+      "ssh_username": "ubuntu"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+		"scripts" : [ "scripts/setup.sh"]
+    }
+  ]
+}
